@@ -1,0 +1,109 @@
+**LuaLens v1.0 --> v2.3.0**
+
+[New Features]:
+
+- Added automatic HTTPS script loading and analysis.
+- Added support for extracting scripts from HTML pages, JSON, and embedded page data.
+- Added static reconstruction of structures such as if, while, for, and functions.
+- Added support for reconstructing UI libraries such as Rayfield, Orion, Obsidian, and WindUI.
+- Added callback and closure reconstruction, preserving shared upvalues and state.
+- Added recovery of encrypted strings from Prometheus.
+- Added support for analyzing key systems and whitelist requests.
+- Added MoonSec deobfuscation support.
+- Added support for up to 3 concurrent users.
+- Added improved Roblox environment and executor API emulation.
+
+[Improvements]:
+
+- Significantly improved deobfuscation speed and memory management.
+- Reduced processing time for heavy scripts by approximately 50%.
+- Reduced static reconstruction time from minutes to seconds in tested cases.
+- Improved MoonSec code generation, serialization, and string reconstruction.
+- Improved variable naming, object paths, and function signatures.
+- Improved loop reconstruction.
+- Improved control-flow reconstruction.
+- Improved Lua/Luau syntax compatibility and compilation accuracy.
+- Improved mathematical precision and handling of CFrame, vectors, and buffers.
+- Improved standard library compatibility with real Roblox Luau.
+- Improved callback state management, upvalue references, and closure captures.
+- Improved handling of large functions, assignments, and multiple return values.
+- Improved executor compatibility and resistance to anti-emulation mechanisms.
+- Improved queue management, concurrent execution, and resource limits.
+- Improved source tracking for remotely loaded scripts.
+- Improved generated code readability and reduced redundant code.
+
+[Removed]:
+
+- Removed goto statements from generated Luau code.
+- Removed raw bytecode listings from the main output file.
+- Removed unnecessary internal LuaLens comments from reconstructed scripts.
+- Removed redundant diagnostic attachments.
+- Removed unnecessary analysis status messages from Discord responses.
+- Removed obsolete executor environment identifiers.
+- Removed unnecessary loop unrolling when the original loop can be preserved.
+- Removed anti-dumper decoys from successfully recovered MoonSec output.
+- Removed unused exported functions and orphaned modules.
+- Removed unnecessary error details that exposed internal server paths.
+- Removed misleading results that appeared complete despite missing information.
+
+[Bug Fixes]:
+
+- Fixed invalid Lua/Luau syntax generation.
+- Fixed invalid identifiers, table keys, missing end statements, and incorrect use of varargs.
+- Fixed parsing of generic functions, typed expressions, and conditional assignments.
+- Fixed goto conversion issues and nested control-flow reconstruction.
+- Fixed loops that were incorrectly unrolled, terminated prematurely, or executed indefinitely.
+- Fixed duplicated code and missing instructions during reconstruction.
+- Fixed incorrect variable scopes, assignment order, and captured values.
+- Fixed callbacks being generated with empty function bodies.
+- Fixed closures incorrectly duplicating shared state.
+- Fixed incorrect upvalue reads and writes.
+- Fixed variable capture behavior in numeric and generic loops.
+- Fixed multiple-return expressions and incorrect parentheses.
+- Fixed incorrect function argument counts and variadic return behavior.
+- Fixed large expressions exceeding Luau register limits.
+- Fixed functions exceeding Luau local variable limits.
+- Fixed evaluation order in nested function calls.
+- Fixed encrypted strings being lost or incorrectly reconstructed.
+- Fixed handling of Unicode, accented characters, and multiline strings.
+- Fixed MoonSec issues involving escape sequences, string concatenation, and table reconstruction.
+- Fixed incorrect identification of anti-dumpers and VM instruction handlers.
+- Fixed cases where unknown VM instructions were incorrectly reported as fully recovered.
+- Fixed Luraph scripts failing due to missing load/loadstring compatibility.
+- Fixed numeric precision issues and incorrect Roblox arithmetic behavior.
+- Fixed missing CFrame rotations and incorrectly reconstructed teleport coordinates.
+- Fixed script loaders losing the first line or failing to resolve URLs.
+- Fixed scripts containing unreachable code after return statements.
+- Fixed misleading network errors in scripts that made no external requests.
+- Fixed empty HTTP responses interrupting analysis.
+- Fixed invalid redirects and connections remaining open after errors.
+- Fixed extremely large scripts causing crashes or excessive memory usage.
+- Fixed duplicate analyses producing inconsistent results.
+- Fixed incorrect queue positions and concurrent execution limit violations.
+- Fixed code cleanup accidentally modifying strings resembling comments.
+- Fixed original script comments disappearing from generated output.
+- Fixed module return values not appearing correctly.
+- Fixed incorrect script behavior caused by incomplete Roblox API emulation.
+
+[Security Fixes]:
+
+- Blocked access to internal addresses and local networks during script downloads.
+- Added strict HTTPS, download size, timeout, and redirect limits.
+- Disabled unsafe bytecode loading during analysis.
+- Added input size and memory consumption restrictions.
+- Isolated MoonSec deobfuscation processes with memory limits.
+- Prevented untrusted scripts from accessing internal server resources.
+- Blocked outgoing POST requests and Discord webhook execution.
+- Prevented malicious script content from triggering Discord mentions.
+- Improved detection of suspicious file, clipboard, network, and webhook operations.
+- Fixed false positives and missed detections in security reports.
+- Added stricter memory limits for attachments and queues.
+
+[Testing & Reliability]:
+
+- Added validation using the real Luau compiler instead of relying solely on Lua 5.4.
+- Added 111 anti-emulation tests and 19 previously unexecuted bytecode tests.
+- Added 125 control-flow tests and 48 argument and return-value tests.
+- Fixed 14 groups of reproduced defects, each backed by regression tests.
+- Achieved successful Luau compilation for 75 out of 75 MoonSec training samples.
+- Achieved a 25/25 pass rate in release validation samples.
